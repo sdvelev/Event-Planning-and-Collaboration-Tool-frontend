@@ -1,0 +1,42 @@
+body {
+  background: url('src/assets/Event.jpg') no-repeat center center fixed;
+  background-size: auto;
+  object-fit: cover;
+  -moz-background-size: cover;
+  min-height: 100vh;
+}
+
+.text-center {
+  margin-top: 6.5%;
+  font-size: 390%;
+  color: #549b9b;
+  font-family: "Dosis ExtraBold", serif;
+  text-shadow:  1px 4px 10px #88888890;
+  /*-webkit-text-stroke: 1px black;*/
+}
+.image {
+  margin-top: 5%;
+  object-fit: cover;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.top-nav-bar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  z-index: 2;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 1px 4px 10px #88888890;
+  margin-bottom: 2%;
+}
+
+.card {
+  margin-right: 4%;
+  margin-left: 4%;
+  border-radius: 20px;
+  border-color: black;
+}

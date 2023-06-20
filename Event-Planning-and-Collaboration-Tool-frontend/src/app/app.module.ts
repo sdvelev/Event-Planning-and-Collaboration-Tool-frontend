@@ -6,11 +6,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MaterialUIModule} from "./material-ui/material-ui.module";
 import { EventComponent } from './event/event.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventComponent
+    EventComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
