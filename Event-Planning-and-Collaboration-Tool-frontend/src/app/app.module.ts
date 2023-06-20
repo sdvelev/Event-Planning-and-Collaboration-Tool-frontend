@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import {MaterialUIModule} from "./material-ui/material-ui.module";
+import {AppComponent} from './app.component';
 import {MatCardModule} from "@angular/material/card";
-import {MatLegacyCardModule} from "@angular/material/legacy-card";
+import {MaterialUIModule} from "./material-ui/material-ui.module";
 import { EventComponent } from './event/event.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -15,9 +15,11 @@ import { EventComponent } from './event/event.component';
   imports: [
     BrowserModule,
     MaterialUIModule,
-    MatLegacyCardModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
