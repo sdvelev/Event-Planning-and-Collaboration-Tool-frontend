@@ -1,0 +1,25 @@
+<div *ngIf="(event$ | async) as plannedEvent; else event_not_found">
+  <mat-card class="planned-event-card">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>{{plannedEvent.name}}</mat-card-title>
+        <mat-card-subtitle>&nbsp;{{plannedEvent.id}}</mat-card-subtitle>
+      </div>
+      <div class="element">
+        <a [href]="plannedEvent.picture_link" target="_blank">
+          <img *ngIf="plannedEvent.picture_link" mat-card-xl-image [src]="plannedEvent.picture_link" >
+        </a>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Date:</strong> {{plannedEvent.date}}</p>
+      <p><strong>Location:</strong> {{plannedEvent.location}}</p>
+      <p><strong>Description:</strong> {{plannedEvent.description}}</p>
+    </mat-card-content>
+  </mat-card>
+  <hr/>
+  <h2>Associated Budgets:</h2>
+</div>
+<ng-template #event_not_found>
+    <p id="not-found">Event with such an id is not found</p>
+</ng-template>
