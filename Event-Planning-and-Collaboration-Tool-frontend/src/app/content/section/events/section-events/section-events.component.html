@@ -1,0 +1,3 @@
+<div *ngIf="(plannedEvents$ | async) as plannedEvents">
+  <app-event-cards [plannedEvents]="plannedEvents"></app-event-cards>
+</div>
