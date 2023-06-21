@@ -1,0 +1,30 @@
+<mat-card class="planned-event-card" *ngFor="let plannedEvent of plannedEvents">
+
+  <mat-card-header>
+    <div class="element" style="flex: 1">
+      <mat-card-title>{{plannedEvent.name}}</mat-card-title>
+      <mat-card-subtitle>&nbsp;{{plannedEvent.id}}</mat-card-subtitle>
+    </div>
+    <div class="element">
+      <a [href]="plannedEvent.picture_link" target="_blank">
+        <img *ngIf="plannedEvent.picture_link" mat-card-xl-image [src]="plannedEvent.picture_link" >
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Date:</strong> {{plannedEvent.date}}</p>
+    <p><strong>Location:</strong> {{plannedEvent.location}}</p>
+    <p><strong>Description:</strong> {{plannedEvent.description}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div id="view">
+      <button mat-button>View Tasks</button>
+      <button mat-button>View Guests</button>
+      <a href="./budgets/{{plannedEvent.id}}"> <button mat-button>View Budgets</button></a>
+      <button mat-button>View Contracts</button>
+    </div>
+    <div id="modify">
+      <button mat-button id="delete">Delete</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
