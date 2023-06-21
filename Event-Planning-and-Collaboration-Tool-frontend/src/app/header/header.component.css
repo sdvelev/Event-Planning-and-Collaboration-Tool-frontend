@@ -1,0 +1,21 @@
+.wrapper {
+  background-color: #7DC2AE;
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+}
+
+h1 {
+  color: #fff;;
+  font-size: 56px;
+  margin: 4px;
+  font-family: "Dosis ExtraBold", sans-serif;
+  font-weight: bold;
+}
+
+p {
+  color: #EFF;
+  font-size: 22px;
+  margin: 12px 0 0;
+  font-family: "Dosis ExtraBold", serif;
+}
