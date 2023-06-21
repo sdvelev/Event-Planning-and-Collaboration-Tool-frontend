@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <app-nav-logged-out *ngIf="!isLogged; else logged"></app-nav-logged-out>
+  <ng-template #logged>
+    <app-nav-logged-in></app-nav-logged-in>
+  </ng-template>
+</div>
+
+
