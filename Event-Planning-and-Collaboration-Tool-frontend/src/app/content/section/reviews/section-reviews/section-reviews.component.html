@@ -1,0 +1,25 @@
+<div *ngIf="(reviews$ | async) as reviews; else review_not_found">
+  <div>
+    <a href="./vendors/{{id}}"> <button mat-button>Go back to vendor <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+  <mat-card class="planned-event-card" *ngFor="let review of reviews">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>Review id: {{review.id}}</mat-card-title>
+        <mat-card-subtitle>With rating: {{review.rating}}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Comment:</strong> {{review.comment}}</p>
+      <p><strong>Photo link:</strong> {{review.photo_link}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div id="modify">
+        <button mat-button id="delete">Delete</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #review_not_found>
+  <p id="not-found">Review with such an id is not found</p>
+</ng-template>

@@ -18,10 +18,10 @@
   </mat-card-content>
   <mat-card-actions>
     <div id="view">
-      <button mat-button>View Tasks</button>
-      <button mat-button>View Guests</button>
+      <a href="./tasks/{{plannedEvent.id}}"> <button mat-button>View Tasks</button></a>
+      <a href="./guests/{{plannedEvent.id}}"> <button mat-button>View Guests</button></a>
       <a href="./budgets/{{plannedEvent.id}}"> <button mat-button>View Budgets</button></a>
-      <button mat-button>View Contracts</button>
+      <a href="./contracts/{{plannedEvent.id}}"> <button mat-button>View Contracts</button></a>
     </div>
     <div id="modify">
       <button mat-button id="delete">Delete</button>

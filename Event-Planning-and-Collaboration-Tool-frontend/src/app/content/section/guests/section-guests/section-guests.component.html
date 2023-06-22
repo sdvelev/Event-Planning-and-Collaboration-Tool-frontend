@@ -1,0 +1,27 @@
+<div *ngIf="(guests$ | async) as guests; else guest_not_found">
+  <div>
+    <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+  <mat-card class="planned-event-card" *ngFor="let guest of guests">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>{{guest.name}} {{guest.surname}}</mat-card-title>
+        <mat-card-subtitle> The guest id is: {{guest.id}}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Email:</strong> {{guest.email}}</p>
+      <p><strong>Guest type:</strong> {{guest.guest_type.toLowerCase()}}</p>
+      <p><strong>Attendance type:</strong> {{guest.attendance_type.toLowerCase()}}</p>
+      <p><strong>Is invitation sent:</strong> {{guest.invitation_sent}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div id="modify">
+        <button mat-button id="delete">Delete</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #guest_not_found>
+  <p id="not-found">Guest with such an id is not found</p>
+</ng-template>

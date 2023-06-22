@@ -1,0 +1,29 @@
+<div *ngIf="(contracts$ | async) as contracts; else contract_not_found">
+  <div>
+    <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+  <mat-card class="planned-event-card" *ngFor="let contract of contracts">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>The contract ID is: {{contract.id}}</mat-card-title>
+        <mat-card-subtitle> Total price: {{contract.total_price}} usd.</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Finished:</strong> {{contract.finished}}</p>
+      <p><strong>Event ID:</strong> {{contract.associated_event.id}}</p>
+      <p><strong>Vendor ID:</strong> {{contract.associated_vendor.id}} </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div id="view">
+        <a href="./vendors/{{contract.associated_vendor.id}}"> <button mat-button>View Vendor</button></a>
+      </div>
+      <div id="modify">
+        <button mat-button id="delete">Delete</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #contract_not_found>
+  <p id="not-found">Contract with such an id is not found</p>
+</ng-template>

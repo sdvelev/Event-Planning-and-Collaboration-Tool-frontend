@@ -1,0 +1,35 @@
+<div *ngIf="(tasks$ | async) as tasks; else task_not_found">
+  <div>
+    <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+  <mat-card class="planned-event-card" *ngFor="let task of tasks">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>{{task.name}}</mat-card-title>
+        <mat-card-subtitle> The task id is: {{task.id}}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Description:</strong> {{task.description}}</p>
+      <p><strong>Task progress:</strong> {{task.task_progress}}</p>
+      <p><strong>Due date:</strong> {{task.due_date}}</p>
+      <p><strong>Last notified:</strong> {{task.last_notified}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div id="modify">
+        <button mat-button id="delete">Delete</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #task_not_found>
+  <p id="not-found">Event with such an id is not found</p>
+</ng-template>
+
+
+
+
+
+  <!--<div *ngIf="(tasks$ | async) as tasks">-->
+<!--  <app-task-cards [tasks]="tasks"></app-task-cards>-->
+<!--</div>-->

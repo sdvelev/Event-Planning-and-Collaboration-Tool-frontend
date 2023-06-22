@@ -1,0 +1,30 @@
+<div *ngIf="(vendor$ | async) as vendor; else vendor_not_found">
+  <div>
+    <a href="./contracts/{{id}}"> <button mat-button>Go back to contracts <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+  <mat-card class="planned-event-card">
+    <mat-card-header>
+      <div class="element" style="flex: 1">
+        <mat-card-title>{{vendor.name}} {{vendor.surname}}</mat-card-title>
+        <mat-card-subtitle> The vendor ID is: {{vendor.id}}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Address:</strong> {{vendor.address}}</p>
+      <p><strong>Phone number:</strong> {{vendor.phone_number}}</p>
+      <p><strong>Email:</strong> {{vendor.email}}</p>
+      <p><strong>Vendor type:</strong> {{vendor.vendor_type.toLowerCase()}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div id="view">
+        <a href="./reviews/{{vendor.id}}"> <button mat-button>View Reviews</button></a>
+      </div>
+      <div id="modify">
+        <button mat-button id="delete">Delete</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #vendor_not_found>
+  <p id="not-found">Vendor with such an id is not found</p>
+</ng-template>
