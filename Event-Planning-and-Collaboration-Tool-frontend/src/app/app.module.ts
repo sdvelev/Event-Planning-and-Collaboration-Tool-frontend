@@ -13,7 +13,7 @@ import {NavLoggedOutComponent} from './navigation/nav-logged-out/nav-logged-out.
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {HomeComponent} from './content/home/home.component';
-import {RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {SectionHomeComponent} from './content/section/home/section-home/section-home.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -34,6 +34,12 @@ import {SectionVendorsComponent} from "./content/section/vendors/section-vendors
 import {SectionReviewsComponent} from './content/section/reviews/section-reviews/section-reviews.component';
 import {SectionGuestsComponent} from './content/section/guests/section-guests/section-guests.component';
 import {SectionContractsComponent} from './content/section/contracts/section-contracts/section-contracts.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {EventFormComponent} from "./content/section/events/event-form/event-form.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatNativeDateModule} from "@angular/material/core";
+import {DatePipe} from "@angular/common";
+import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +70,8 @@ import {SectionContractsComponent} from './content/section/contracts/section-con
     SectionReviewsComponent,
     SectionGuestsComponent,
     SectionContractsComponent,
+    EventFormComponent,
+    EventEditFormComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +80,12 @@ import {SectionContractsComponent} from './content/section/contracts/section-con
     MatMenuModule,
     RouterOutlet,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
