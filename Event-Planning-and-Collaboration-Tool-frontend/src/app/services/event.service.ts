@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, tap} from "rxjs";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {PlannedEvent} from "../models/planned-event";
 import {HttpClient} from "@angular/common/http";
 
@@ -24,6 +24,19 @@ export class EventService {
           this.event$.next(event);
         })
       );
+  }
+
+  addEvent(eventDto: PlannedEvent): Observable<number> {
+    console.log(eventDto);
+    return this.httpClient.post<number>('http://localhost:8080/events', eventDto);
+  }
+
+  editEvent(eventId: number, eventDto: PlannedEvent): Observable<boolean> {
+    return this.httpClient.put<boolean>(`http://localhost:8080/events/set?event_id=${eventId}`, eventDto);
+  }
+
+  deleteEvent(eventId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`http://localhost:8080/events?event_id=${eventId}`);
   }
 
   getEventByName(name: string) {
