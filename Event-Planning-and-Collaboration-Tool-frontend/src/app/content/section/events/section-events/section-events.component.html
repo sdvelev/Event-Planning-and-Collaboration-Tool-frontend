@@ -1,3 +1,9 @@
+<div id="addButton">
+<button id="addEvent" mat-raised-button (click)="openEventForm()">
+  <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+  Add Event
+</button>
+</div>
 <div *ngIf="(plannedEvents$ | async) as plannedEvents">
   <app-event-cards [plannedEvents]="plannedEvents"></app-event-cards>
 </div>

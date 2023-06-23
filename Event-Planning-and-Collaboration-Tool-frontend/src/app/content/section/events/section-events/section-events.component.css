@@ -1,0 +1,16 @@
+#addButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addEvent {
+  margin-right: 6px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 20px;
+}
+
+#addEvent:hover {
+  font-weight: bold;
+}
