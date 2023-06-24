@@ -1,6 +1,7 @@
 <div *ngIf="(tasks$ | async) as tasks; else task_not_found">
   <div>
     <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+
   </div>
   <mat-card class="planned-event-card" *ngFor="let task of tasks">
     <mat-card-header>
@@ -16,6 +17,9 @@
       <p><strong>Last notified:</strong> {{task.last_notified}}</p>
     </mat-card-content>
     <mat-card-actions>
+      <div id="view">
+        <a href="./task_notific/{{task.id}}"> <button mat-button>View Vendor</button></a>
+      </div>
       <div id="modify">
         <button mat-button id="delete">Delete</button>
       </div>

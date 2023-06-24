@@ -10,6 +10,7 @@ import {GuestsComponent} from "./content/guests/guests.component";
 import {ContractsComponent} from "./content/contracts/contracts.component";
 import {VendorsComponent} from "./content/vendors/vendors.component";
 import {ReviewsComponent} from "./content/reviews/reviews.component";
+import {TaskNotificationsComponent} from "./content/task-notifications/task-notifications.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'contracts/:id', component: ContractsComponent },
   { path: 'vendors/:id', component: VendorsComponent },
   { path: 'reviews/:id', component: ReviewsComponent },
+  { path: 'task_notific/:id', component: TaskNotificationsComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

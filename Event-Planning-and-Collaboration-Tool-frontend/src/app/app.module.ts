@@ -34,6 +34,11 @@ import {SectionVendorsComponent} from "./content/section/vendors/section-vendors
 import {SectionReviewsComponent} from './content/section/reviews/section-reviews/section-reviews.component';
 import {SectionGuestsComponent} from './content/section/guests/section-guests/section-guests.component';
 import {SectionContractsComponent} from './content/section/contracts/section-contracts/section-contracts.component';
+import {TaskNotificationsComponent} from "./content/task-notifications/task-notifications.component";
+import {
+  SectionTaskNotificationsComponent
+} from "./content/section/tasks/section-task-notifications/section-task-notifications.component";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -64,6 +69,8 @@ import {SectionContractsComponent} from './content/section/contracts/section-con
     SectionReviewsComponent,
     SectionGuestsComponent,
     SectionContractsComponent,
+    TaskNotificationsComponent,
+    SectionTaskNotificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,8 @@ import {SectionContractsComponent} from './content/section/contracts/section-con
     MatMenuModule,
     RouterOutlet,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
