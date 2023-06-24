@@ -13,7 +13,7 @@ import {NavLoggedOutComponent} from './navigation/nav-logged-out/nav-logged-out.
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {HomeComponent} from './content/home/home.component';
-import {RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {SectionHomeComponent} from './content/section/home/section-home/section-home.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -39,6 +39,12 @@ import {
   SectionTaskNotificationsComponent
 } from "./content/section/tasks/section-task-notifications/section-task-notifications.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { ReactiveFormsModule } from '@angular/forms';
+import {EventFormComponent} from "./content/section/events/event-form/event-form.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatNativeDateModule} from "@angular/material/core";
+import {DatePipe} from "@angular/common";
+import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +77,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     SectionContractsComponent,
     TaskNotificationsComponent,
     SectionTaskNotificationsComponent,
+    EventFormComponent,
+    EventEditFormComponent
   ],
   imports: [
     BrowserModule,
@@ -81,8 +89,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     AppRoutingModule,
     HttpClientModule,
     MatButtonToggleModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

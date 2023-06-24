@@ -46,7 +46,7 @@ mat-card-actions {
   justify-content: space-between;
 }
 
-#delete {
+#delete, #edit {
   margin-right: 6px;
   color: #CC0000;
 }

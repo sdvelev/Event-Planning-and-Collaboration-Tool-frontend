@@ -1,5 +1,4 @@
 <mat-card class="planned-event-card" *ngFor="let plannedEvent of plannedEvents">
-
   <mat-card-header>
     <div class="element" style="flex: 1">
       <mat-card-title>{{plannedEvent.name}}</mat-card-title>
@@ -24,7 +23,8 @@
       <a href="./contracts/{{plannedEvent.id}}"> <button mat-button>View Contracts</button></a>
     </div>
     <div id="modify">
-      <button mat-button id="delete">Delete</button>
+      <button mat-button id="edit" (click)="editButton(plannedEvent)">Edit</button>
+      <button mat-button id="delete" (click)="deleteButton(plannedEvent.id)">Delete</button>
     </div>
   </mat-card-actions>
 </mat-card>
