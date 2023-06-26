@@ -40,6 +40,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
 import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
+import { AllBudgetCardComponent } from './content/section/budgets/all-budget-card/all-budget-card.component';
+import { BudgetCardsComponent } from './content/section/budgets/budget-cards/budget-cards.component';
+import { ExpenseCardsComponent } from './content/section/budgets/expense-cards/expense-cards.component';
+import { BudgetFormComponent } from './content/section/budgets/budget-form/budget-form.component';
+import { BudgetEditFormComponent } from './content/section/budgets/budget-edit-form/budget-edit-form.component';
+import { ExpenseFormComponent } from './content/section/budgets/expense-form/expense-form.component';
+import { ExpenseEditFormComponent } from './content/section/budgets/expense-edit-form/expense-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +78,14 @@ import { EventEditFormComponent } from './content/section/events/event-edit-form
     SectionGuestsComponent,
     SectionContractsComponent,
     EventFormComponent,
-    EventEditFormComponent
+    EventEditFormComponent,
+    AllBudgetCardComponent,
+    BudgetCardsComponent,
+    ExpenseCardsComponent,
+    BudgetFormComponent,
+    BudgetEditFormComponent,
+    ExpenseFormComponent,
+    ExpenseEditFormComponent
   ],
   imports: [
     BrowserModule,
