@@ -1,0 +1,20 @@
+<mat-card class="all-budget-card"  *ngFor="let expense of expenses">
+  <mat-card-header>
+    <div class="element" style="flex: 1">
+      <mat-card-title>Expense: {{expense.expenditure_category}}</mat-card-title>
+      <mat-card-subtitle>&nbsp;{{expense.id}}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Description:</strong> {{expense.description}}</p>
+    <p><strong>Amount:</strong> £{{expense.amount}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div id="view">
+    </div>
+    <div id="modify">
+      <button mat-button id="edit" (click)="editButton(expense)">Edit</button>
+      <button mat-button id="delete" (click)="deleteButton(expense.id)">Delete</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
