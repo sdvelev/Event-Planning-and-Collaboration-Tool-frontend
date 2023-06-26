@@ -1,0 +1,69 @@
+mat-card {
+  margin:6px;
+}
+
+mat-card:first-of-type  #view button {
+  display: none;
+}
+
+mat-card-title, mat-card-subtitle {
+  font-weight: bold;
+  font-family: "Dosis ExtraBold", serif;
+}
+
+mat-card-title {
+  font-size: 36px;
+}
+
+mat-card-subtitle {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 20px;
+}
+
+mat-card-content {
+  font-size: 20px;
+}
+
+
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+mat-card img {
+  width: auto;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+button:hover {
+  font-weight: bold;
+}
+
+mat-card-actions {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#delete, #edit {
+  margin-right: 6px;
+  color: #CC0000;
+}
+
+#addButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addExpense {
+  margin-right: 54px;
+  margin-top: 23px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  padding: 20px;
+}
