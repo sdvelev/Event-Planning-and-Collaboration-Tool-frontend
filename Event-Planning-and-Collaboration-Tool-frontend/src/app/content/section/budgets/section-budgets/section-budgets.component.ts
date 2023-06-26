@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PlannedEvent} from "../../../../models/planned-event";
 import {EventService} from "../../../../services/event.service";
-import {BudgetService} from "../../../../services/budget.service";
-import {Budget} from "../../../../models/budget";
 import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
@@ -19,15 +17,12 @@ export class SectionBudgetsComponent implements OnInit, OnDestroy {
 
   event$!: Observable<PlannedEvent>;
 
-  budgets$!: Observable<Budget[] | undefined>;
-
-  constructor(private eventService: EventService, private budgetService: BudgetService,
+  constructor(private eventService: EventService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.queryId = this.activatedRoute.params.subscribe(params => {this.id = params['id'];});
     this.event$ = this.eventService.getEventById(this.id);
-    this.budgets$ = this.budgetService.getBudgetsByEventId(this.id);
   }
 
   ngOnDestroy() {
