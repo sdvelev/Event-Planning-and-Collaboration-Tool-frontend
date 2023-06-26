@@ -1,0 +1,36 @@
+<div id="wrapper">
+  <h2>Add Budget</h2>
+  <form [formGroup]="budgetForm">
+    <mat-form-field>
+      <input matInput placeholder="Description *" formControlName="description">
+      <mat-error *ngIf="budgetForm.controls['description'].invalid && budgetForm.controls['description'].touched">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="expenditure_category" placeholder="Expenditure Category *">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="Decoration">Decoration</mat-option>
+        <mat-option value="Caterer">Caterer</mat-option>
+        <mat-option value="Photographer">Photographer</mat-option>
+        <mat-option value="Venue">Venue</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="budgetForm.controls['expenditure_category'].invalid && budgetForm.controls['expenditure_category'].touched">
+        Expenditure category is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Amount *" formControlName="amount" type="number">
+      <mat-error *ngIf="budgetForm.controls['amount'].invalid && budgetForm.controls['amount'].touched">
+        Amount is required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="saveBudget()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
