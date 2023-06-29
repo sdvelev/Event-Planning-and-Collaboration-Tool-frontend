@@ -1,1 +1,41 @@
-<p>registration works!</p>
+<div id="wrapper">
+  <h2>Registration Form</h2>
+  <form [formGroup]="registrationForm">
+    <mat-form-field>
+      <input matInput placeholder="Username *" formControlName="username">
+      <mat-error *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].touched">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password *" formControlName="password">
+      <mat-error *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email *" formControlName="email">
+      <mat-error *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Surname" formControlName="surname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Profile photo link" formControlName="profile_photo_link">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Address" formControlName="address">
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="register()">Register</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
