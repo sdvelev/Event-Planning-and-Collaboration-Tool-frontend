@@ -1,0 +1,15 @@
+<div id="wrapper">
+  <div id="title">
+    <h2>Associated Budgets</h2>
+  </div>
+  <div id="addButton">
+    <button id="addBudget" mat-raised-button (click)="openBudgetForm()">
+      <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+      Add Budget
+    </button>
+  </div>
+</div>
+<div *ngIf="(budgets$ | async) as budgets">
+  <app-budget-cards [budgets]="budgets"></app-budget-cards>
+</div>
+

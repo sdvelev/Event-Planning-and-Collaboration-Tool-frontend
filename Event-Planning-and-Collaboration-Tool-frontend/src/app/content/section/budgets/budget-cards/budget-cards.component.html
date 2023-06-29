@@ -1,0 +1,44 @@
+<mat-card class="all-budget-card"  *ngFor="let budget of budgets">
+  <mat-card-header>
+    <div class="element" style="flex: 1">
+      <mat-card-title>{{budget.expenditure_category}}</mat-card-title>
+      <mat-card-subtitle>&nbsp;{{budget.id}}</mat-card-subtitle>
+    </div>
+    <div class="element">
+      <a [href]="getBudgetImage(budget.expenditure_category)" target="_blank">
+        <img mat-card-xl-image [src]="getBudgetImage(budget.expenditure_category)" >
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Description:</strong> {{budget.description}}</p>
+    <p><strong>Amount:</strong> £{{budget.amount}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div id="view">
+      <button mat-button (click)="toggleExpenses(budget)"> {{ budget.show_expenses ? 'Hide Expenses' : 'Show Expenses' }}</button>
+<!--      <a href="./tasks/{{plannedEvent.id}}"> <button mat-button>View Tasks</button></a>-->
+<!--      <a href="./guests/{{plannedEvent.id}}"> <button mat-button>View Guests</button></a>-->
+<!--      <a href="./budgets/{{plannedEvent.id}}"> <button mat-button>View Budgets</button></a>-->
+<!--      <a href="./contracts/{{plannedEvent.id}}"> <button mat-button>View Contracts</button></a>-->
+    </div>
+    <div id="modify">
+      <button mat-button id="edit" (click)="editButton(budget)">Edit</button>
+      <button mat-button id="delete" (click)="deleteButton(budget.id)">Delete</button>
+    </div>
+  </mat-card-actions>
+  <mat-card-footer>
+    <div *ngIf="budget.show_expenses" >
+      <hr/>
+      <div id="addButton">
+        <button id="addExpense" mat-raised-button (click)="openExpenseForm(budget.expenditure_category)">
+          <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+          Add Expense
+        </button>
+      </div>
+      <ng-container *ngIf="(filteredExpenses$[budget.expenditure_category] | async) as filteredExpenses">
+        <app-expense-cards [expenses]="filteredExpenses"></app-expense-cards>
+      </ng-container>
+    </div>
+  </mat-card-footer>
+</mat-card>

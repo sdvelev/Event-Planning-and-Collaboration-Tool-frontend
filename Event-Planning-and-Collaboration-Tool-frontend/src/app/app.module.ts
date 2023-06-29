@@ -13,7 +13,7 @@ import {NavLoggedOutComponent} from './navigation/nav-logged-out/nav-logged-out.
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {HomeComponent} from './content/home/home.component';
-import {Router, RouterOutlet} from "@angular/router";
+import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {SectionHomeComponent} from './content/section/home/section-home/section-home.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -39,19 +39,28 @@ import {
   SectionTaskNotificationsComponent
 } from "./content/section/tasks/section-task-notifications/section-task-notifications.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {EventFormComponent} from "./content/section/events/event-form/event-form.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
-import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
-import { TaskEditFormComponent } from './content/section/tasks/task-edit-form/task-edit-form.component';
-import { TaskFormComponent } from './content/section/tasks/task-form/task-form.component';
-import { GuestEditFormComponent } from './content/section/guests/guest-edit-form/guest-edit-form.component';
-import { GuestFormComponent } from './content/section/guests/guest-form/guest-form.component';
+import {EventEditFormComponent} from './content/section/events/event-edit-form/event-edit-form.component';
+import {TaskEditFormComponent} from './content/section/tasks/task-edit-form/task-edit-form.component';
+import {TaskFormComponent} from './content/section/tasks/task-form/task-form.component';
+import {GuestEditFormComponent} from './content/section/guests/guest-edit-form/guest-edit-form.component';
+import {GuestFormComponent} from './content/section/guests/guest-form/guest-form.component';
 import {MatChipsModule} from "@angular/material/chips";
-import { ContractFormComponent } from './content/section/contracts/contract-form/contract-form.component';
-import { ContractEditFromComponent } from './content/section/contracts/contract-edit-from/contract-edit-from.component';
+import {ContractFormComponent} from './content/section/contracts/contract-form/contract-form.component';
+import {ContractEditFromComponent} from './content/section/contracts/contract-edit-from/contract-edit-from.component';
+
+import {AllBudgetCardComponent} from './content/section/budgets/all-budget-card/all-budget-card.component';
+import {BudgetCardsComponent} from './content/section/budgets/budget-cards/budget-cards.component';
+import {ExpenseCardsComponent} from './content/section/budgets/expense-cards/expense-cards.component';
+import {BudgetFormComponent} from './content/section/budgets/budget-form/budget-form.component';
+import {BudgetEditFormComponent} from './content/section/budgets/budget-edit-form/budget-edit-form.component';
+import {ExpenseFormComponent} from './content/section/budgets/expense-form/expense-form.component';
+import {ExpenseEditFormComponent} from './content/section/budgets/expense-edit-form/expense-edit-form.component';
+
 
 @NgModule({
   declarations: [
@@ -93,6 +102,13 @@ import { ContractEditFromComponent } from './content/section/contracts/contract-
     ContractFormComponent,
     ContractEditFromComponent,
 
+    AllBudgetCardComponent,
+    BudgetCardsComponent,
+    ExpenseCardsComponent,
+    BudgetFormComponent,
+    BudgetEditFormComponent,
+    ExpenseFormComponent,
+    ExpenseEditFormComponent
   ],
   imports: [
     BrowserModule,
@@ -108,8 +124,13 @@ import { ContractEditFromComponent } from './content/section/contracts/contract-
     MatNativeDateModule,
     MatChipsModule
   ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+  providers
+:
+[DatePipe],
+  bootstrap
+:
+[AppComponent]
 })
+
 export class AppModule {
 }

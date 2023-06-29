@@ -1,0 +1,45 @@
+mat-card {
+  margin:36px;
+}
+
+mat-card-title, mat-card-subtitle {
+  font-weight: bold;
+  font-family: "Dosis ExtraBold", serif;
+}
+
+mat-card-title {
+  font-size: 20px;
+}
+
+mat-card-subtitle {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+mat-card-content {
+  font-size: 16px;
+}
+
+
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button:hover {
+  font-weight: bold;
+}
+
+mat-card-actions {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#delete, #edit {
+  margin-right: 6px;
+  color: #CC0000;
+}
