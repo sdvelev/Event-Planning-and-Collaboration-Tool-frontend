@@ -50,3 +50,21 @@ mat-card-actions {
   margin-right: 6px;
   color: #CC0000;
 }
+
+#addButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addTask {
+  margin-right: 6px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 20px;
+}
+
+#addTask:hover {
+  font-weight: bold;
+}
+

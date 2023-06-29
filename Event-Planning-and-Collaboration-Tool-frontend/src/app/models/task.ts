@@ -1,5 +1,3 @@
-import {PlannedEvent} from "./planned-event";
-
 export class Task {
   id: number;
   name: string;
@@ -7,14 +5,14 @@ export class Task {
   task_progress: string;
   due_date: string;
   last_notified: string;
-  associated_event: PlannedEvent;
-  //associated_participant: Participant;
+  associated_event: number | null;
+  associated_participant: number | null;
 
   constructor(id: number = 0, name: string = "", description: string = "", task_progress: string = "",
               due_date: string = "",
               last_notified: string = "",
-              associated_event: PlannedEvent = new PlannedEvent(),
-              // associated_participant: number = 0
+              associated_event: number | null = null,
+              associated_participant: number | null = null
   ) {
     this.id = id;
     this.name = name;
@@ -23,8 +21,6 @@ export class Task {
     this.due_date = due_date;
     this.last_notified = last_notified;
     this.associated_event = associated_event;
-
-    // FIX PARTICIPANT
-    //this.associated_participant = associated_participant
+    this.associated_participant = associated_participant
   }
 }

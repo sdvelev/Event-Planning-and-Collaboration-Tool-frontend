@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, tap} from "rxjs";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Review} from "../models/review";
+import {Guest} from "../models/guest";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,21 @@ export class ReviewService {
 
   getReviewsByVendorId(id: number) {
     return this.httpClient.get<Review[]>('http://localhost:8080/reviews/search?assigned_vendor_id=' + id);
+  }
+
+  addReview(reviewDto: Review): Observable<number> {
+    let vendor: number | null = reviewDto.assigned_vendor;
+    reviewDto.assigned_vendor = null;
+
+    return this.httpClient.post<number>(`http://localhost:8080/reviews?assigned_vendor_id=${vendor}`, reviewDto);
+  }
+
+  editReview(reviewId: number, reviewDto: Review): Observable<boolean> {
+    reviewDto.assigned_vendor = null;
+    return this.httpClient.put<boolean>(`http://localhost:8080/reviews/set?review_id=${reviewId}`, reviewDto);
+  }
+
+  deleteReview(reviewId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`http://localhost:8080/reviews/delete?id=${reviewId}`);
   }
 }

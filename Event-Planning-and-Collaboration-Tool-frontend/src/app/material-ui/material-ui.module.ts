@@ -90,7 +90,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatChipsModule,
     MatTooltipModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ]
 })
 export class MaterialUIModule { }

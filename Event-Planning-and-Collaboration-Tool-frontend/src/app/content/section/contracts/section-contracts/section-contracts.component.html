@@ -1,6 +1,10 @@
 <div *ngIf="(contracts$ | async) as contracts; else contract_not_found">
   <div>
     <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+    <button id="addContract" mat-raised-button (click)="openContractForm()">
+      <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+      Add Contract
+    </button>
   </div>
   <mat-card class="planned-event-card" *ngFor="let contract of contracts">
     <mat-card-header>
@@ -11,15 +15,16 @@
     </mat-card-header>
     <mat-card-content>
       <p><strong>Finished:</strong> {{contract.finished}}</p>
-      <p><strong>Event ID:</strong> {{contract.associated_event.id}}</p>
-      <p><strong>Vendor ID:</strong> {{contract.associated_vendor.id}} </p>
+      <p><strong>Event ID:</strong> {{contract.associated_event}}</p>
+      <p><strong>Vendor ID:</strong> {{contract.associated_vendor}} </p>
     </mat-card-content>
     <mat-card-actions>
       <div id="view">
-        <a href="./vendors/{{contract.associated_vendor.id}}"> <button mat-button>View Vendor</button></a>
+        <a href="./vendors/{{contract.associated_vendor}}"> <button mat-button>View Vendor</button></a>
       </div>
       <div id="modify">
-        <button mat-button id="delete">Delete</button>
+        <button mat-button id="edit" (click)="editButton(contract)">Edit</button>
+        <button mat-button id="delete" (click)="deleteButton(contract.id)">Delete</button>
       </div>
     </mat-card-actions>
   </mat-card>

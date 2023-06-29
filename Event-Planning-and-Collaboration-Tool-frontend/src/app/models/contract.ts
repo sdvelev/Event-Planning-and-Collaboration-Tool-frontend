@@ -1,16 +1,13 @@
-import {PlannedEvent} from "./planned-event";
-import {Vendor} from "./vendor";
-
 export class Contract {
   id: number;
   total_price: string;
   finished: boolean;
-  associated_event: PlannedEvent;
-  associated_vendor: Vendor;
+  associated_event: number | null;
+  associated_vendor: number | null;
 
   constructor(id: number = 0, total_price: string = "", finished: boolean = false,
-              associated_event: PlannedEvent = new PlannedEvent(),
-              associated_vendor: Vendor = new Vendor()) {
+              associated_event: number | null = 0,
+              associated_vendor: number | null = 0) {
     this.id = id;
     this.total_price = total_price;
     this.finished = finished;

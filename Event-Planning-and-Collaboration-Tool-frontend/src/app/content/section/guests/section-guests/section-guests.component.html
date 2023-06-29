@@ -1,7 +1,11 @@
 <div *ngIf="(guests$ | async) as guests; else guest_not_found">
-  <div>
+  <span>
     <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
-  </div>
+    <button id="addGuest" mat-raised-button (click)="openGuestForm()">
+      <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+      Add Guest
+    </button>
+  </span>
   <mat-card class="planned-event-card" *ngFor="let guest of guests">
     <mat-card-header>
       <div class="element" style="flex: 1">
@@ -17,7 +21,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div id="modify">
-        <button mat-button id="delete">Delete</button>
+        <button mat-button id="edit" (click)="editButton(guest)">Edit</button>
+        <button mat-button id="delete" (click)="deleteButton(guest.id)">Delete</button>
       </div>
     </mat-card-actions>
   </mat-card>

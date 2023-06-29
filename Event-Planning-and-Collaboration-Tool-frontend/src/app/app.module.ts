@@ -45,6 +45,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
 import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
+import { TaskEditFormComponent } from './content/section/tasks/task-edit-form/task-edit-form.component';
+import { TaskFormComponent } from './content/section/tasks/task-form/task-form.component';
+import { GuestEditFormComponent } from './content/section/guests/guest-edit-form/guest-edit-form.component';
+import { GuestFormComponent } from './content/section/guests/guest-form/guest-form.component';
+import {MatChipsModule} from "@angular/material/chips";
+import { ContractFormComponent } from './content/section/contracts/contract-form/contract-form.component';
+import { ContractEditFromComponent } from './content/section/contracts/contract-edit-from/contract-edit-from.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +85,14 @@ import { EventEditFormComponent } from './content/section/events/event-edit-form
     TaskNotificationsComponent,
     SectionTaskNotificationsComponent,
     EventFormComponent,
-    EventEditFormComponent
+    EventEditFormComponent,
+    TaskEditFormComponent,
+    TaskFormComponent,
+    GuestEditFormComponent,
+    GuestFormComponent,
+    ContractFormComponent,
+    ContractEditFromComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -88,10 +102,11 @@ import { EventEditFormComponent } from './content/section/events/event-edit-form
     RouterOutlet,
     AppRoutingModule,
     HttpClientModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, tap} from "rxjs";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Vendor} from "../models/vendor";
 
@@ -32,5 +32,17 @@ export class VendorService {
 
   getVendorsByEventId(id: number) {
     return this.httpClient.get<Vendor[]>('http://localhost:8080/vendors/search?event_id=' + id);
+  }
+
+  addVendor(vendorDto: Vendor): Observable<number> {
+    return this.httpClient.post<number>("http://localhost:8080/vendors", vendorDto);
+  }
+
+  editVendor(vendorId: number, vendorDto: Vendor): Observable<boolean> {
+    return this.httpClient.put<boolean>(`http://localhost:8080/vendors/set?vendor_id=${vendorId}`, vendorDto);
+  }
+
+  deleteVendor(vendorId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`http://localhost:8080/vendors/delete?id=${vendorId}`);
   }
 }

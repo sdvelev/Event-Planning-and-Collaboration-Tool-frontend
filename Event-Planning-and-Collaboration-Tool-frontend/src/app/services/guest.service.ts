@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, tap} from "rxjs";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Guest} from "../models/guest";
 
@@ -32,5 +32,22 @@ export class GuestService {
 
   getGuestsByEventId(id: number) {
     return this.httpClient.get<Guest[]>('http://localhost:8080/guests/search?event_id=' + id);
+  }
+
+  addGuest(guestDto: Guest): Observable<number> {
+    console.log("AAAAAAAAAAAAAA");
+    let event: number | null = guestDto.associated_event;
+    guestDto.associated_event = null;
+
+    return this.httpClient.post<number>("http://localhost:8080/guests?assigned_event_id=" + event, guestDto);
+  }
+
+  editGuest(guestId: number, guestDto: Guest): Observable<boolean> {
+    guestDto.associated_event = null;
+    return this.httpClient.put<boolean>(`http://localhost:8080/guests/set?guest_id=${guestId}`, guestDto);
+  }
+
+  deleteGuest(guestId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`http://localhost:8080/guests/delete?id=${guestId}`);
   }
 }

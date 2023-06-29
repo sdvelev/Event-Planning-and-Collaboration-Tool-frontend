@@ -1,5 +1,3 @@
-import {PlannedEvent} from "./planned-event";
-
 export class Guest {
   id: number;
   name: string;
@@ -8,12 +6,12 @@ export class Guest {
   guest_type: string;
   attendance_type: string;
   invitation_sent: boolean;
-  associated_event: PlannedEvent;
+  associated_event: number | null;
 
   constructor(id: number = 0, name: string = "", surname: string = "", email: string = "", guest_type: string = "",
               attendance_type: string = "",
               invitation_sent: boolean = false,
-              associated_event: PlannedEvent = new PlannedEvent()) {
+              associated_event: number | null = 0) {
     this.id = id;
     this.name = name;
     this.surname = surname;

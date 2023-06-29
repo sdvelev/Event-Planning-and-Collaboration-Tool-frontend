@@ -1,0 +1,58 @@
+<div id="wrapper">
+  <h2>Add Guest</h2>
+  <form [formGroup]="guestFrom">
+    <mat-form-field>
+      <input matInput placeholder="Name *" formControlName="name">
+      <mat-error *ngIf="guestFrom.controls['name'].invalid && guestFrom.controls['name'].touched">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Surname *" formControlName="surname">
+      <mat-error *ngIf="guestFrom.controls['surname'].invalid && guestFrom.controls['surname'].touched">
+        Surname is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email *" formControlName="email">
+      <mat-error *ngIf="guestFrom.controls['email'].invalid && guestFrom.controls['email'].touched">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Guest type *" formControlName="guest_type">
+        <mat-option value="FAMILY">FAMILY</mat-option>
+        <mat-option value="FRIENDS">FRIENDS</mat-option>
+        <mat-option value="COLLEAGUES">COLLEAGUES</mat-option>
+        <mat-option value="CO_WORKERS">CO WORKERS</mat-option>
+        <mat-option value="PARTNER">PARTNER</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Attendance type *" formControlName="attendance_type">
+        <mat-option value="GOING">GOING</mat-option>
+        <mat-option value="NOT_GOING">NOT GOING</mat-option>
+        <mat-option value="CONSIDERING">CONSIDERING</mat-option>
+        <mat-option value="ATTENDING">ATTENDING</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Is invitation sent *" formControlName="invitation_sent">
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Event id *" formControlName="associated_event">
+      <mat-error *ngIf="guestFrom.controls['associated_event'].invalid && guestFrom.controls['associated_event'].touched">
+        Event id required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="saveGuest()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

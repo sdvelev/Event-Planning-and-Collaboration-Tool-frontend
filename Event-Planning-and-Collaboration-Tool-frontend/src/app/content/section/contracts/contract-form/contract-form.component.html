@@ -1,0 +1,35 @@
+<div id="wrapper">
+  <h2>Add Contract</h2>
+  <form [formGroup]="contractForm">
+    <mat-form-field>
+      <input matInput placeholder="Total price *" formControlName="total_price">
+      <mat-error *ngIf="contractForm.controls['total_price'].invalid && contractForm.controls['total_price'].touched">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Finished *" formControlName="finished">
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Event id *" formControlName="associated_event">
+      <mat-error *ngIf="contractForm.controls['associated_event'].invalid && contractForm.controls['associated_event'].touched">
+        Event id required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Vendor id *" formControlName="associated_vendor">
+      <mat-error *ngIf="contractForm.controls['associated_vendor'].invalid && contractForm.controls['associated_vendor'].touched">
+        Vendor id required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="saveContract()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
