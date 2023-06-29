@@ -22,7 +22,7 @@ export class ExpenseService {
   }
 
   getAllExpenses() {
-    return this.httpClient.get<Budget[]>('http://localhost:8080/expenses').toPromise();
+    return this.httpClient.get<Expense[]>('http://localhost:8080/expenses').toPromise();
   }
 
   getExpenseById(id: number) {
