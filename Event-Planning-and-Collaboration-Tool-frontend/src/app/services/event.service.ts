@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {PlannedEvent} from "../models/planned-event";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -26,17 +26,25 @@ export class EventService {
       );
   }
 
-  addEvent(eventDto: PlannedEvent): Observable<number> {
-    console.log(eventDto);
-    return this.httpClient.post<number>('http://localhost:8080/events', eventDto);
+  addEvent(eventDto: PlannedEvent, token: string): Observable<number> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.post<number>('http://localhost:8080/events', eventDto,
+      {headers: headers});
   }
 
-  editEvent(eventId: number, eventDto: PlannedEvent): Observable<boolean> {
-    return this.httpClient.put<boolean>(`http://localhost:8080/events/set?event_id=${eventId}`, eventDto);
+  editEvent(eventId: number, eventDto: PlannedEvent, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.put<boolean>(`http://localhost:8080/events/set?event_id=${eventId}`, eventDto,
+      {headers: headers});
   }
 
-  deleteEvent(eventId: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(`http://localhost:8080/events?event_id=${eventId}`);
+  deleteEvent(eventId: number, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.delete<boolean>(`http://localhost:8080/events?event_id=${eventId}`,
+      {headers: headers});
   }
 
   getEventByName(name: string) {
