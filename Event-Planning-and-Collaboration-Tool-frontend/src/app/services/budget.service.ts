@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Budget} from "../models/budget";
 
 @Injectable({
@@ -29,16 +29,24 @@ export class BudgetService {
       );
   }
 
-  addBudget(budgetDto: Budget, eventId: number): Observable<number> {
-    console.log(budgetDto);
-    return this.httpClient.post<number>(`http://localhost:8080/budgets?assigned_event_id=${eventId}`, budgetDto);
+  addBudget(budgetDto: Budget, eventId: number, token: string): Observable<number> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.post<number>(`http://localhost:8080/budgets?assigned_event_id=${eventId}`, budgetDto,
+      {headers: headers});
   }
 
-  editBudget(budgetId: number, budgetDto: Budget): Observable<boolean> {
-    return this.httpClient.put<boolean>(`http://localhost:8080/budgets/set?budget_id=${budgetId}`, budgetDto);
+  editBudget(budgetId: number, budgetDto: Budget, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.put<boolean>(`http://localhost:8080/budgets/set?budget_id=${budgetId}`, budgetDto,
+      {headers: headers});
   }
 
-  deleteBudget(budgetId: number, eventId: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(`http://localhost:8080/budgets?id=${budgetId}&assigned_event_id=${eventId}`);
+  deleteBudget(budgetId: number, eventId: number, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.delete<boolean>(`http://localhost:8080/budgets?id=${budgetId}&assigned_event_id=${eventId}`,
+      {headers: headers});
   }
 }

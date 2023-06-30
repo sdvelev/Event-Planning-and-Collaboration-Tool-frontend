@@ -21,11 +21,10 @@ export class UserService {
         tap((user: User) => {
           this.user$.next(user);
         })
-      ).toPromise();
+      );
   }
 
   addUser(userDto: User): Observable<number> {
-    console.log(userDto);
     return this.httpClient.post<number>(`http://localhost:8080/users`, userDto);
   }
 
