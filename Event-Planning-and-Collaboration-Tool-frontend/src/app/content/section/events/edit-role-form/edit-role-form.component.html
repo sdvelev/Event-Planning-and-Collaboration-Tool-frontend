@@ -1,0 +1,21 @@
+<div id="wrapper">
+  <h2>Edit Event</h2>
+  <form [formGroup]="editRoleForm">
+    <mat-form-field>
+      <mat-select formControlName="user_role" placeholder="User Role *">
+        <mat-option value="CREATOR" disabled>Creator</mat-option>
+        <mat-option value="Planner">Planner</mat-option>
+        <mat-option value="Guest">Guest</mat-option>
+      </mat-select>
+      <mat-error *ngIf="editRoleForm.controls['user_role'].invalid && editRoleForm.controls['user_role'].touched">
+        User Role is required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="editRole()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
