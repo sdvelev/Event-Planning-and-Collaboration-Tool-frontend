@@ -3,6 +3,9 @@ import {PlannedEvent} from "../../../../models/planned-event";
 import {EventService} from "../../../../services/event.service";
 import {MatDialog} from "@angular/material/dialog";
 import {EventFormComponent} from "../event-form/event-form.component";
+import {Participant} from "../../../../models/participant";
+import {ParticipantService} from "../../../../services/participant.service";
+import {ParticipantFormComponent} from "../participant-form/participant-form.component";
 
 @Component({
   selector: 'app-section-events',
@@ -11,13 +14,19 @@ import {EventFormComponent} from "../event-form/event-form.component";
 })
 export class SectionEventsComponent implements OnInit{
 
-  plannedEvents$!: Promise<PlannedEvent[] | undefined>;
+  participants$!: Promise<Participant[] | undefined>;
 
-  constructor(private eventService: EventService, private dialog: MatDialog) {
+  constructor(private participantService: ParticipantService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.plannedEvents$ = this.eventService.getAllEvents();
+    const token = localStorage.getItem('tokenEventCrafter');
+    if (token) {
+      const { user_id } = JSON.parse(token);
+      if (user_id) {
+        this.participants$ = this.participantService.getAllParticipantsByUserId(user_id);
+      }
+    }
   }
 
   openEventForm() {
