@@ -1,11 +1,16 @@
 <div *ngIf="(guests$ | async) as guests; else guest_not_found">
-  <span>
-    <a href="./events"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
-    <button id="addGuest" mat-raised-button (click)="openGuestForm()">
-      <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
-      Add Guest
-    </button>
-  </span>
+  <div id="top-buttons-guests">
+    <div class="top-button">
+      <a href="./events"> <button id="back-button" mat-button>Go back to events<mat-icon>arrow_left_alt</mat-icon> </button></a>
+    </div>
+    <div class="top-button">
+      <button id="addGuest" mat-raised-button (click)="openGuestForm()">
+        <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+        Add Guest
+      </button>
+    </div>
+  </div>
+
   <mat-card class="planned-event-card" *ngFor="let guest of guests">
     <mat-card-header>
       <div class="element" style="flex: 1">
@@ -17,7 +22,7 @@
       <p><strong>Email:</strong> {{guest.email}}</p>
       <p><strong>Guest type:</strong> {{guest.guest_type.toLowerCase()}}</p>
       <p><strong>Attendance type:</strong> {{guest.attendance_type.toLowerCase()}}</p>
-      <p><strong>Is invitation sent:</strong> {{guest.invitation_sent}}</p>
+      <p><strong>Is invitation sent:</strong> Yes </p>
     </mat-card-content>
     <mat-card-actions>
       <div id="modify">

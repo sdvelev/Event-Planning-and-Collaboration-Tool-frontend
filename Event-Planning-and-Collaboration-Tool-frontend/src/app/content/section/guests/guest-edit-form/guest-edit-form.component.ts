@@ -25,7 +25,7 @@ export class GuestEditFormComponent {
       email: [guestData?.email || '', Validators.required],
       guest_type: [guestData?.guest_type || '', Validators.required],
       attendance_type: [guestData?.attendance_type || '', Validators.required],
-      invitation_sent: [guestData?.invitation_sent || '', Validators.required],
+      // invitation_sent: [guestData?.invitation_sent || '', Validators.required],
     });
   }
 
@@ -38,7 +38,7 @@ export class GuestEditFormComponent {
         email: this.guestFrom.value.email,
         guest_type: this.guestFrom.value.guest_type,
         attendance_type: this.guestFrom.value.attendance_type,
-        invitation_sent: this.guestFrom.value.invitation_sent
+        invitation_sent: true
       };
 
       this.guestService.editGuest(guestToSave.id, guestToSave).subscribe(updatedGuest => {

@@ -1,0 +1,29 @@
+<div id="wrapper">
+  <h2>Edit Review</h2>
+  <form [formGroup]="reviewForm">
+    <mat-form-field>
+      <input matInput placeholder="Rating *" formControlName="rating">
+      <mat-error *ngIf="reviewForm.controls['rating'].invalid && reviewForm.controls['rating'].touched">
+        Rating is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Comment *" formControlName="comment">
+      <mat-error *ngIf="reviewForm.controls['comment'].invalid && reviewForm.controls['comment'].touched">
+        Comment is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Photo link *" formControlName="photo_link">
+      <mat-error *ngIf="reviewForm.controls['photo_link'].invalid && reviewForm.controls['photo_link'].touched">
+        Photo link is required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="editReview()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

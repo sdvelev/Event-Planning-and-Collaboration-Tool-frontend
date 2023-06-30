@@ -1,10 +1,10 @@
 <div id="wrapper">
-  <h2>Add Task</h2>
+  <h2>Edit contract</h2>
   <form [formGroup]="contractForm">
     <mat-form-field>
       <input matInput placeholder="Total price *" formControlName="total_price">
-      <mat-error *ngIf="contractForm.controls['name'].invalid && contractForm.controls['name'].touched">
-        Name is required
+      <mat-error *ngIf="contractForm.controls['total_price'].invalid && contractForm.controls['total_price'].touched">
+        Total price is required
       </mat-error>
     </mat-form-field>
     <mat-form-field>

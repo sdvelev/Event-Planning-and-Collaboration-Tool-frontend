@@ -35,7 +35,6 @@ export class GuestService {
   }
 
   addGuest(guestDto: Guest): Observable<number> {
-    console.log("AAAAAAAAAAAAAA");
     let event: number | null = guestDto.associated_event;
     guestDto.associated_event = null;
 

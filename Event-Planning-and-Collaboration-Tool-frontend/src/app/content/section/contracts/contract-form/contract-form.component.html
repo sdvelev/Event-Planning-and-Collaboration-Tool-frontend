@@ -7,12 +7,12 @@
         Name is required
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Finished *" formControlName="finished">
-        <mat-option value="true">Yes</mat-option>
-        <mat-option value="false">No</mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field>-->
+<!--      <mat-select placeholder="Finished *" formControlName="finished">-->
+<!--        <mat-option value="true">Yes</mat-option>-->
+<!--        <mat-option value="false">No</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
     <mat-form-field>
       <input matInput placeholder="Event id *" formControlName="associated_event">
       <mat-error *ngIf="contractForm.controls['associated_event'].invalid && contractForm.controls['associated_event'].touched">

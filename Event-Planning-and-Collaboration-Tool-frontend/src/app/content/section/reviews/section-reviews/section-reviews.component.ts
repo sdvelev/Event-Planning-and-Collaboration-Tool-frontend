@@ -7,6 +7,12 @@ import {Review} from "../../../../models/review";
 import {ReviewService} from "../../../../services/review.service";
 import {VendorService} from "../../../../services/vendor.service";
 import {Vendor} from "../../../../models/vendor";
+import {MatDialog} from "@angular/material/dialog";
+import {TaskFormComponent} from "../../tasks/task-form/task-form.component";
+import {Task} from "../../../../models/task";
+import {TaskEditFormComponent} from "../../tasks/task-edit-form/task-edit-form.component";
+import {ReviewFormComponent} from "../review-form/review-form.component";
+import {ReviewEditFormComponent} from "../review-edit-form/review-edit-form.component";
 
 @Component({
   selector: 'app-section-reviews',
@@ -23,7 +29,8 @@ export class SectionReviewsComponent implements OnInit {
 
   reviews$!: Observable<Review[] | undefined>;
 
-  constructor(private vendorService: VendorService, private reviewService: ReviewService, private activatedRoute: ActivatedRoute) {
+  constructor(private vendorService: VendorService, private reviewService: ReviewService,
+              private activatedRoute: ActivatedRoute, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -38,5 +45,51 @@ export class SectionReviewsComponent implements OnInit {
 
   ngOnDestroy() {
     this.queryId.unsubscribe();
+  }
+
+  openReviewForm() {
+    const dialogRef = this.dialog.open(ReviewFormComponent, {
+      width: '600px',
+      height: '620px',
+      data: null
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        window.location.reload();
+      }
+    });
+  }
+
+  editButton(review: Review) {
+    const dialogRef = this.dialog.open(ReviewEditFormComponent, {
+      width: '600px',
+      height: '620px',
+      data: {
+        id: review.id,
+        rating: review.rating,
+        comment: review.comment,
+        photo_link: review.photo_link,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        window.location.reload();
+      }
+    });
+  }
+
+  deleteButton(reviewId: number) {
+    const confirmed = window.confirm('Are you sure you want to delete this review?');
+    if (confirmed) {
+      this.reviewService.deleteReview(reviewId).subscribe(result => {
+        if (result) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 50);
+        }
+      });
+    }
   }
 }

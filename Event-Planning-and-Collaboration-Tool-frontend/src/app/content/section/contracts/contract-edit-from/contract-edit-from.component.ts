@@ -33,7 +33,7 @@ export class ContractEditFromComponent {
         finished: this.contractForm.value.finished,
       };
 
-      this.contractService.addContract(contractToSave).subscribe(updatedContract => {
+      this.contractService.editContract(contractToSave.id, contractToSave).subscribe(updatedContract => {
         this.dialogRef.close(updatedContract);
       });
     }

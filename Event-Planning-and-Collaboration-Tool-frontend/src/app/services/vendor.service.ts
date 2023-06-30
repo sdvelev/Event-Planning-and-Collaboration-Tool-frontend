@@ -31,6 +31,7 @@ export class VendorService {
   }
 
   getVendorsByEventId(id: number) {
+    console.log(id);
     return this.httpClient.get<Vendor[]>('http://localhost:8080/vendors/search?event_id=' + id);
   }
 

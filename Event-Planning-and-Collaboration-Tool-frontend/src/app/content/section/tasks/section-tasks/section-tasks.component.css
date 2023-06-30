@@ -68,3 +68,13 @@ mat-card-actions {
   font-weight: bold;
 }
 
+#top-buttons-tasks {
+  display: flex;
+  justify-content: space-between;
+}
+
+#back-button {
+  margin-right: 6px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+}

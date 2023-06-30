@@ -50,3 +50,31 @@ mat-card-actions {
   margin-right: 6px;
   color: #CC0000;
 }
+
+#addButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addReview {
+  margin-right: 6px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 20px;
+}
+
+#addReview:hover {
+  font-weight: bold;
+}
+
+#top-buttons-reviews {
+  display: flex;
+  justify-content: space-between;
+}
+
+#back-button {
+  margin-right: 6px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+}

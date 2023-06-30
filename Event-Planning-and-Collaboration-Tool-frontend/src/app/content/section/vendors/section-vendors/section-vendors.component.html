@@ -1,6 +1,11 @@
 <div *ngIf="(vendor$ | async) as vendor; else vendor_not_found">
   <div>
-    <a href="./contracts/{{id}}"> <button mat-button>Go back to contracts <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  </div>
+
+  <div id="top-buttons-vendors">
+    <div class="top-button">
+      <a href="./contracts/{{id}}"> <button id="back-button" mat-button>Go back to contracts <mat-icon>arrow_left_alt</mat-icon> </button></a>
+    </div>
   </div>
   <mat-card class="planned-event-card">
     <mat-card-header>
@@ -20,7 +25,8 @@
         <a href="./reviews/{{vendor.id}}"> <button mat-button>View Reviews</button></a>
       </div>
       <div id="modify">
-        <button mat-button id="delete">Delete</button>
+        <button mat-button id="edit" (click)="editButton(vendor)">Edit</button>
+        <button mat-button id="delete" (click)="deleteButton(vendor.id)">Delete</button>
       </div>
     </mat-card-actions>
   </mat-card>

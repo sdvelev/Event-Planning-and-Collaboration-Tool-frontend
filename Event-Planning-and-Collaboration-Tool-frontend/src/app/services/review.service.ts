@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Review} from "../models/review";
-import {Guest} from "../models/guest";
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +25,6 @@ export class ReviewService {
         })
       );
   }
-
-  // getReviewsByName(name: string) {
-  //   return this.httpClient.get<Review[]>('http://localhost:8080/reviews/search?name=' + name);
-  // }
 
   getReviewsByVendorId(id: number) {
     return this.httpClient.get<Review[]>('http://localhost:8080/reviews/search?assigned_vendor_id=' + id);

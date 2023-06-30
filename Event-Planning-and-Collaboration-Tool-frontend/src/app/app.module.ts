@@ -67,6 +67,9 @@ import {EditUserFormComponent} from './content/section/home/edit-user-form/edit-
 import {DeleteUserFormComponent} from './content/section/home/delete-user-form/delete-user-form.component';
 import {EditRoleFormComponent} from './content/section/events/edit-role-form/edit-role-form.component';
 import {ParticipantFormComponent} from './content/section/events/participant-form/participant-form.component';
+import {VendorEditFormComponent} from './content/section/vendors/vendor-edit-form/vendor-edit-form.component';
+import { ReviewFormComponent } from './content/section/reviews/review-form/review-form.component';
+import { ReviewEditFormComponent } from './content/section/reviews/review-edit-form/review-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +110,6 @@ import {ParticipantFormComponent} from './content/section/events/participant-for
     GuestFormComponent,
     ContractFormComponent,
     ContractEditFromComponent,
-
     AllBudgetCardComponent,
     BudgetCardsComponent,
     ExpenseCardsComponent,
@@ -122,8 +124,10 @@ import {ParticipantFormComponent} from './content/section/events/participant-for
     EditUserFormComponent,
     DeleteUserFormComponent,
     EditRoleFormComponent,
-    ParticipantFormComponent
-
+    ParticipantFormComponent,
+    VendorEditFormComponent,
+    ReviewFormComponent,
+    ReviewEditFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import {Contract} from "../models/contract";
 })
 export class ContractService {
 
-  task$: BehaviorSubject<Contract> = new BehaviorSubject<Contract>(new Contract());
+  contract$: BehaviorSubject<Contract> = new BehaviorSubject<Contract>(new Contract());
 
   constructor(private httpClient: HttpClient) {
   }
@@ -21,7 +21,7 @@ export class ContractService {
     return this.httpClient.get<Contract>('http://localhost:8080/contracts/search?id=' + id)
       .pipe(
         tap((contract: Contract) => {
-          this.task$.next(contract);
+          this.contract$.next(contract);
         })
       );
   }
@@ -30,31 +30,20 @@ export class ContractService {
     return this.httpClient.get<Contract>('http://localhost:8080/contracts/search?vendor_id=' + id)
       .pipe(
         tap((contract: Contract) => {
-          this.task$.next(contract);
+          this.contract$.next(contract);
         })
       );
   }
-
-  // getTasksByName(name: string) {
-  //   return this.httpClient.get<Contract[]>('http://localhost:8080/tasks/search?name=' + name);
-  // }
 
   getContractByEventId(id: number) {
     return this.httpClient.get<Contract[]>('http://localhost:8080/contracts/search?event_id=' + id);
   }
 
   addContract(contractDto: Contract): Observable<number> {
-    let event: number | null = contractDto.associated_event;
-    let vendor: number | null = contractDto.associated_vendor;
-    contractDto.associated_event = null;
-    contractDto.associated_vendor = null;
-
-    return this.httpClient.post<number>(`http://localhost:8080/contracts?assigned_event_id=${event}&assigned_vendor_id=${vendor}`, contractDto);
+    return this.httpClient.post<number>(`http://localhost:8080/contracts?assigned_event_id=${contractDto.associated_event.id}&assigned_vendor_id=${contractDto.associated_vendor.id}`, contractDto);
   }
 
   editContract(contractId: number, contractDto: Contract): Observable<boolean> {
-    contractDto.associated_event = null;
-    contractDto.associated_vendor = null;
     return this.httpClient.put<boolean>(`http://localhost:8080/contracts/set?contract_id=${contractId}`, contractDto);
   }
 

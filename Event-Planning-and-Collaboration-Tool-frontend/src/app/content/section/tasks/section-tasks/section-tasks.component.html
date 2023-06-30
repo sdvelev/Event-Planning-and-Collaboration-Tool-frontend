@@ -1,11 +1,15 @@
 <div *ngIf="(tasks$ | async) as tasks; else task_not_found">
-  <span>
-    <a href="./events" data-inline="true"> <button mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
-    <button id="addTask" mat-raised-button (click)="openTaskForm()">
-      <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
-      Add Task
-    </button>
-  </span>
+  <div id="top-buttons-tasks">
+    <div class="top-button">
+      <a href="./events" data-inline="true"> <button id="back-button" mat-button>Go back to events <mat-icon>arrow_left_alt</mat-icon> </button></a>
+    </div>
+    <div class="top-button">
+      <button id="addTask" mat-raised-button (click)="openTaskForm()">
+        <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+        Add Task
+      </button>
+    </div>
+  </div>
 
   <mat-card class="planned-event-card" *ngFor="let task of tasks">
     <mat-card-header>

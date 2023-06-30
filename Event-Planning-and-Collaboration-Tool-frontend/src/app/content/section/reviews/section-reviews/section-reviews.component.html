@@ -1,7 +1,16 @@
 <div *ngIf="(reviews$ | async) as reviews; else review_not_found">
-  <div>
-    <a href="./vendors/{{id}}"> <button mat-button>Go back to vendor <mat-icon>arrow_left_alt</mat-icon> </button></a>
+  <div id="top-buttons-reviews">
+    <div class="top-button">
+      <a href="./vendors/{{id}}"> <button id="back-button" mat-button>Go back to vendor <mat-icon>arrow_left_alt</mat-icon> </button></a>
+    </div>
+    <div class="top-button">
+      <button id="addReview" mat-raised-button (click)="openReviewForm()">
+        <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+        Add Review
+      </button>
+    </div>
   </div>
+
   <mat-card class="planned-event-card" *ngFor="let review of reviews">
     <mat-card-header>
       <div class="element" style="flex: 1">
@@ -15,7 +24,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div id="modify">
-        <button mat-button id="delete">Delete</button>
+        <button mat-button id="edit" (click)="editButton(review)">Edit</button>
+        <button mat-button id="delete" (click)="deleteButton(review.id)">Delete</button>
       </div>
     </mat-card-actions>
   </mat-card>

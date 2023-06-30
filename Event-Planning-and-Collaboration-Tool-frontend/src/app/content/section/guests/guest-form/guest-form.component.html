@@ -36,12 +36,12 @@
         <mat-option value="ATTENDING">ATTENDING</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Is invitation sent *" formControlName="invitation_sent">
-        <mat-option value="true">Yes</mat-option>
-        <mat-option value="false">No</mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field>-->
+<!--      <mat-select placeholder="Is invitation sent *" formControlName="invitation_sent">-->
+<!--        <mat-option value="true">Yes</mat-option>-->
+<!--        <mat-option value="false">No</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
     <mat-form-field>
       <input matInput placeholder="Event id *" formControlName="associated_event">
       <mat-error *ngIf="guestFrom.controls['associated_event'].invalid && guestFrom.controls['associated_event'].touched">
