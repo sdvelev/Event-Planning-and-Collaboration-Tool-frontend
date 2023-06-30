@@ -48,9 +48,9 @@ export class EditUserFormComponent {
 
       const tokenObject = localStorage.getItem('tokenEventCrafter');
       if (tokenObject) {
-        const { token } = JSON.parse(tokenObject);
+        const {token} = JSON.parse(tokenObject);
         if (token) {
-          this.userService.editUser(userToEdit.id,userToEdit,token).subscribe(updatedUser => {
+          this.userService.editUser(userToEdit.id, userToEdit, token).subscribe(updatedUser => {
               this.dialogRef.close(updatedUser);
             }
             ,
@@ -62,10 +62,11 @@ export class EditUserFormComponent {
           );
           return;
         }
+      } else {
+        this.snackBar.open('Failure in authorization. Please, try again.', 'Close', {
+          duration: 6000
+        });
       }
-      this.snackBar.open('Failure in authorization. Please, try again.', 'Close', {
-        duration: 6000
-      });
     }
   }
 
