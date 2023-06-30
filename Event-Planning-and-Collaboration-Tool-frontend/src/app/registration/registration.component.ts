@@ -49,6 +49,9 @@ export class RegistrationComponent {
       };
 
       this.userService.addUser(userDto).subscribe(addedUser => {
+          this.snackBar.open('Successful registration.', 'Close', {
+            duration: 6000
+          });
         this.dialogRef.close(addedUser);
         return this.router.navigate(['/home']);
       },
