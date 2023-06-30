@@ -53,6 +53,8 @@ import { ChangeUsernameFormComponent } from './content/section/home/change-usern
 import { ChangePasswordFormComponent } from './content/section/home/change-password-form/change-password-form.component';
 import { EditUserFormComponent } from './content/section/home/edit-user-form/edit-user-form.component';
 import { DeleteUserFormComponent } from './content/section/home/delete-user-form/delete-user-form.component';
+import { EditRoleFormComponent } from './content/section/events/edit-role-form/edit-role-form.component';
+import { ParticipantFormComponent } from './content/section/events/participant-form/participant-form.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { DeleteUserFormComponent } from './content/section/home/delete-user-form
     ChangeUsernameFormComponent,
     ChangePasswordFormComponent,
     EditUserFormComponent,
-    DeleteUserFormComponent
+    DeleteUserFormComponent,
+    EditRoleFormComponent,
+    ParticipantFormComponent
   ],
   imports: [
     BrowserModule,
