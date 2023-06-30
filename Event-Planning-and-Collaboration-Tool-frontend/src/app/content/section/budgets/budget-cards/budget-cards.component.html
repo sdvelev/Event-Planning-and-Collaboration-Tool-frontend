@@ -17,10 +17,6 @@
   <mat-card-actions>
     <div id="view">
       <button mat-button (click)="toggleExpenses(budget)"> {{ budget.show_expenses ? 'Hide Expenses' : 'Show Expenses' }}</button>
-<!--      <a href="./tasks/{{plannedEvent.id}}"> <button mat-button>View Tasks</button></a>-->
-<!--      <a href="./guests/{{plannedEvent.id}}"> <button mat-button>View Guests</button></a>-->
-<!--      <a href="./budgets/{{plannedEvent.id}}"> <button mat-button>View Budgets</button></a>-->
-<!--      <a href="./contracts/{{plannedEvent.id}}"> <button mat-button>View Contracts</button></a>-->
     </div>
     <div id="modify">
       <button mat-button id="edit" (click)="editButton(budget)">Edit</button>
@@ -28,7 +24,7 @@
     </div>
   </mat-card-actions>
   <mat-card-footer>
-    <div *ngIf="budget.show_expenses" >
+    <div id="expenses-container" *ngIf="budget.show_expenses" >
       <hr/>
       <div id="addButton">
         <button id="addExpense" mat-raised-button (click)="openExpenseForm(budget.expenditure_category)">
