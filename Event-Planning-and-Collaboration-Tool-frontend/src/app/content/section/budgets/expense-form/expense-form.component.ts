@@ -35,31 +35,38 @@ export class ExpenseFormComponent {
 
   saveExpense() {
     if (this.expenseForm.valid) {
-      const expenseToSave: Expense = <Expense> {
+      const expenseToSave: Expense = <Expense>{
         id: this.expenseData?.id || null,
         description: this.expenseForm.value.description,
         expenditure_category: this.expenseForm.value.expenditure_category,
         amount: this.expenseForm.value.amount
       };
 
-      if (this.event_id) {
-        this.expenseService.addExpense(expenseToSave, this.event_id).subscribe(
-          updatedEvent => {
-            this.dialogRef.close(updatedEvent);
-          },
-          error => {
-            this.snackBar.open('Failed to save expense. Check if the budget for that category permits creating a new expense.', 'Close', {
-              duration: 6000
-            });
-          }
-        );
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token && this.event_id) {
+          this.expenseService.addExpense(expenseToSave, this.event_id, token).subscribe(
+            updatedExpense => {
+              this.dialogRef.close(updatedExpense);
+            }
+            ,
+            error => {
+              this.snackBar.open('Failed to save expense. Check if the budget for that category permits creating a new expense.', 'Close', {
+                duration: 6000
+              });
+            }
+          );
+          return;
+        }
       } else {
-        this.snackBar.open('Failed to save expense. Event with such an id cannot be found', 'Close', {
+        this.snackBar.open('Failure in authorization or missing such an event id.', 'Close', {
           duration: 6000
         });
       }
     }
   }
+
 
   cancel() {
     this.dialogRef.close();

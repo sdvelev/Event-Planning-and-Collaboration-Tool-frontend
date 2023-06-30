@@ -6,6 +6,7 @@ import {Expense} from "../../../../models/expense";
 import {ExpenseService} from "../../../../services/expense.service";
 import {BudgetEditFormComponent} from "../budget-edit-form/budget-edit-form.component";
 import {ExpenseEditFormComponent} from "../expense-edit-form/expense-edit-form.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-expense-cards',
@@ -17,7 +18,7 @@ export class ExpenseCardsComponent implements OnInit {
   @Input()
   expenses: Expense[] = [];
 
-  constructor(private dialog: MatDialog, private expenseService: ExpenseService) {
+  constructor(private dialog: MatDialog, private expenseService: ExpenseService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -44,15 +45,33 @@ export class ExpenseCardsComponent implements OnInit {
   }
 
   deleteButton(expenseId: number) {
+
     const confirmed = window.confirm('Are you sure that you want to delete this expense?');
     if (confirmed) {
-      this.expenseService.deleteExpense(expenseId).subscribe(result => {
-        if (result) {
-          setTimeout(() => {
-            window.location.reload();
-          }, 50);
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token) {
+          this.expenseService.deleteExpense(expenseId, token).subscribe(result => {
+              if (result) {
+                setTimeout(() => {
+                  window.location.reload();
+                }, 50);
+                return;
+              }
+            },
+            error => {
+              this.snackBar.open('Failed to delete expense.', 'Close', {
+                duration: 6000
+              });
+              return;
+            });
         }
-      });
+      } else {
+        this.snackBar.open('Failure in authentication.', 'Close', {
+          duration: 6000
+        });
+      }
     }
   }
 }
