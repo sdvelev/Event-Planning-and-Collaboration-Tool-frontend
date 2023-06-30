@@ -59,20 +59,12 @@ import {BudgetFormComponent} from './content/section/budgets/budget-form/budget-
 import {BudgetEditFormComponent} from './content/section/budgets/budget-edit-form/budget-edit-form.component';
 import {ExpenseFormComponent} from './content/section/budgets/expense-form/expense-form.component';
 import {ExpenseEditFormComponent} from './content/section/budgets/expense-edit-form/expense-edit-form.component'
-import { EventEditFormComponent } from './content/section/events/event-edit-form/event-edit-form.component';
-import { AllBudgetCardComponent } from './content/section/budgets/all-budget-card/all-budget-card.component';
-import { BudgetCardsComponent } from './content/section/budgets/budget-cards/budget-cards.component';
-import { ExpenseCardsComponent } from './content/section/budgets/expense-cards/expense-cards.component';
-import { BudgetFormComponent } from './content/section/budgets/budget-form/budget-form.component';
-import { BudgetEditFormComponent } from './content/section/budgets/budget-edit-form/budget-edit-form.component';
-import { ExpenseFormComponent } from './content/section/budgets/expense-form/expense-form.component';
-import { ExpenseEditFormComponent } from './content/section/budgets/expense-edit-form/expense-edit-form.component';
-import { SectionUserComponent } from './content/section/home/section-user/section-user.component';
-import { UserCardComponent } from './content/section/home/user-card/user-card.component';
-import { ChangeUsernameFormComponent } from './content/section/home/change-username-form/change-username-form.component';
-import { ChangePasswordFormComponent } from './content/section/home/change-password-form/change-password-form.component';
-import { EditUserFormComponent } from './content/section/home/edit-user-form/edit-user-form.component';
-import { DeleteUserFormComponent } from './content/section/home/delete-user-form/delete-user-form.component';
+import {SectionUserComponent} from './content/section/home/section-user/section-user.component';
+import {UserCardComponent} from './content/section/home/user-card/user-card.component';
+import {ChangeUsernameFormComponent} from './content/section/home/change-username-form/change-username-form.component';
+import {ChangePasswordFormComponent} from './content/section/home/change-password-form/change-password-form.component';
+import {EditUserFormComponent} from './content/section/home/edit-user-form/edit-user-form.component';
+import {DeleteUserFormComponent} from './content/section/home/delete-user-form/delete-user-form.component';
 
 @NgModule({
   declarations: [
