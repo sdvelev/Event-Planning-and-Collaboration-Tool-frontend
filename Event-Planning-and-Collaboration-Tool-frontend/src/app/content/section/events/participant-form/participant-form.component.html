@@ -1,0 +1,31 @@
+<div id="wrapper">
+  <h2>Add Participant</h2>
+  <form [formGroup]="participantForm">
+
+    <mat-form-field>
+      <mat-select formControlName="assigned_user_id" placeholder="User *">
+        <mat-option *ngFor="let user of users" [value]="user.id">{{user.id}}: {{user.username}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="participantForm.controls['assigned_user_id'].invalid && participantForm  .controls['assigned_user_id'].touched">
+        User is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select formControlName="user_role" placeholder="User Role *">
+        <mat-option value="CREATOR" disabled>Creator</mat-option>
+        <mat-option value="Planner">Planner</mat-option>
+        <mat-option value="Guest">Guest</mat-option>
+      </mat-select>
+      <mat-error *ngIf="participantForm.controls['user_role'].invalid && participantForm  .controls['user_role'].touched">
+        User Role is required
+      </mat-error>
+    </mat-form-field>
+    <div id="button-wrapper">
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="addParticipant()">Add</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
