@@ -12,6 +12,7 @@ import {ExpenseService} from "../../../../services/expense.service";
 import {BudgetEditFormComponent} from "../budget-edit-form/budget-edit-form.component";
 import {BudgetFormComponent} from "../budget-form/budget-form.component";
 import {ExpenseFormComponent} from "../expense-form/expense-form.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-budget-cards',
@@ -29,7 +30,7 @@ export class BudgetCardsComponent implements OnInit{
   filteredExpenses$: { [expenditure_category: string]: Observable<Expense[] | undefined> } = {};
 
   constructor(private dialog: MatDialog, private budgetService: BudgetService, private expenseService: ExpenseService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -68,15 +69,33 @@ export class BudgetCardsComponent implements OnInit{
   }
 
   deleteButton(budgetId: number) {
+
     const confirmed = window.confirm('Are you sure that you want to delete this budget?');
     if (confirmed) {
-      this.budgetService.deleteBudget(budgetId, this.id).subscribe(result => {
-        if (result) {
-          setTimeout(() => {
-            window.location.reload();
-          }, 50);
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token) {
+          this.budgetService.deleteBudget(budgetId, this.id, token).subscribe(result => {
+              if (result) {
+                setTimeout(() => {
+                  window.location.reload();
+                }, 50);
+                return;
+              }
+            },
+            error => {
+              this.snackBar.open('Failed to delete budget.', 'Close', {
+                duration: 6000
+              });
+              return;
+            });
         }
-      });
+      } else {
+        this.snackBar.open('Failure in authentication.', 'Close', {
+          duration: 6000
+        });
+      }
     }
   }
 
