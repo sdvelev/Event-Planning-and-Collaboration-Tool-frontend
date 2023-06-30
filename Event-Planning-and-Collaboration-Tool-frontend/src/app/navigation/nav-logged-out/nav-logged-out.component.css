@@ -35,15 +35,17 @@ li {
   font-family: "Dosis ExtraBold", sans-serif;
 }
 
-a {
+a, button {
   display: block;
   color: #ffffff;
   text-align: center;
   padding: 10px;
   text-decoration: none;
+  border: none;
+  background-color: #E8A87C;
 }
 
-a:hover {
+a:hover, button:hover {
   background-color: #E27D60;
   font-weight: bold;
 }

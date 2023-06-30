@@ -1,0 +1,39 @@
+<mat-card class="user-card">
+  <mat-card-header>
+    <div class="element" style="flex: 1">
+      <mat-card-title>{{user.username}}</mat-card-title>
+      <mat-card-subtitle>&nbsp;{{user.id}}</mat-card-subtitle>
+    </div>
+    <div class="element">
+      <a [href]="user.profile_photo_link" target="_blank">
+        <img *ngIf="user.profile_photo_link" mat-card-xl-image [src]="user.profile_photo_link" >
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Name:</strong> {{user.name}}</p>
+    <p><strong>Surname:</strong> {{user.surname}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Address:</strong> {{user.address}}</p>
+    <div id="audit">
+    <p *ngIf="user.created_by"><strong>Created by:</strong> {{user.created_by}}</p>
+    <p *ngIf="user.creation_time"><strong>Creation time:</strong> {{user.creation_time}}</p>
+    <p *ngIf="user.updated_by"><strong>Updated by:</strong> {{user.updated_by}}</p>
+    <p *ngIf="user.last_updated_time"><strong>Last updated time:</strong> {{user.last_updated_time}}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div id="view">
+<!--      <a href="./tasks/{{user.id}}"> <button mat-button>View Tasks</button></a>-->
+<!--      <a href="./guests/{{user.id}}"> <button mat-button>View Guests</button></a>-->
+<!--      <a href="./budgets/{{user.id}}"> <button mat-button>View Budgets</button></a>-->
+<!--      <a href="./contracts/{{user.id}}"> <button mat-button>View Contracts</button></a>-->
+      <button mat-button (click)="editUser()">Edit profile details</button>
+    </div>
+    <div id="modify">
+      <button mat-button class="edit" (click)="changeUsername()">Change username</button>
+      <button mat-button class="edit" (click)="changePassword()">Change password</button>
+      <button mat-button id="delete" (click)="deleteProfile()">Delete profile</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

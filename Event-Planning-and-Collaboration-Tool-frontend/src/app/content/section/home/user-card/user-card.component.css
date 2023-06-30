@@ -1,0 +1,61 @@
+mat-card {
+  margin: 37px 6px;
+}
+
+mat-card-title, mat-card-subtitle {
+  font-weight: bold;
+  font-family: "Dosis ExtraBold", serif;
+}
+
+mat-card-title {
+  font-size: 36px;
+}
+
+mat-card-subtitle {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 20px;
+}
+
+mat-card-content {
+  font-size: 20px;
+  margin-top: 26px;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+mat-card img {
+  width: auto;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+button:hover {
+  font-weight: bold;
+}
+
+mat-card-actions {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#delete, .edit {
+  margin-right: 6px;
+  color: #CC0000;
+}
+
+#audit {
+  font-size: 16px;
+  text-align: right;
+}
+
+#audit p {
+  margin-top: 3px;
+}
