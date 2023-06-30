@@ -4,6 +4,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {PlannedEvent} from "../../../../models/planned-event";
 import {EventService} from "../../../../services/event.service";
 import {DatePipe} from "@angular/common";
+import {ParticipantService} from "../../../../services/participant.service";
+import {UserService} from "../../../../services/user.service";
+import {Participant} from "../../../../models/participant";
+import {User} from "../../../../models/user";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {subscribeOn} from "rxjs";
 
 @Component({
   selector: 'app-event-form',
@@ -19,7 +25,10 @@ export class EventFormComponent {
     @Inject(MAT_DIALOG_DATA) private eventData: PlannedEvent,
     private formBuilder: FormBuilder,
     private eventService: EventService,
-    private datePipe: DatePipe
+    private participantService: ParticipantService,
+    private userService: UserService,
+    private datePipe: DatePipe,
+    private snackBar: MatSnackBar
   ) {
 
     this.eventForm = this.formBuilder.group({
@@ -42,9 +51,50 @@ export class EventFormComponent {
         picture_link: this.eventForm.value.picture_link
       };
 
-      this.eventService.addEvent(eventToSave).subscribe(updatedEvent => {
-        this.dialogRef.close(updatedEvent);
-      });
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+
+        const {user_id} = JSON.parse(tokenObject);
+        const {token} = JSON.parse(tokenObject);
+
+        if (user_id && token) {
+          this.eventService.addEvent(eventToSave, token).subscribe(addedEventId => {
+            this.userService.getUserById(user_id)
+              .subscribe((user: User | undefined) => {
+                this.eventService.getEventById(addedEventId)
+                  .subscribe((event: PlannedEvent) => {
+                    const participantDto: Participant = <Participant>{
+                      associated_user: user,
+                      associated_event: event,
+                      user_role: 'Creator'
+                    };
+                    this.participantService.addParticipant(participantDto, user_id, addedEventId, token).
+                    subscribe(addedParticipantId => {
+                      this.dialogRef.close(addedParticipantId);
+                      return;
+                    },
+                      error => {
+                        this.snackBar.open('Failed to add participant.', 'Close', {
+                          duration: 6000
+                        });
+                        return;
+                      })
+                  });
+              });
+            return;
+          },
+            error => {
+              this.snackBar.open('Failed to add event.', 'Close', {
+                duration: 6000
+              });
+              return;
+            });
+        }
+      } else {
+        this.snackBar.open('Failure in authentication.', 'Close', {
+          duration: 6000
+        });
+      }
     }
   }
 

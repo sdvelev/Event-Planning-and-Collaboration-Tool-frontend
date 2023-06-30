@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { PlannedEvent } from "../../../../models/planned-event";
-import { EventService } from "../../../../services/event.service";
-import { DatePipe } from "@angular/common";
+import {Component, Inject} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {PlannedEvent} from "../../../../models/planned-event";
+import {EventService} from "../../../../services/event.service";
+import {DatePipe} from "@angular/common";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-event-edit-form',
@@ -18,7 +19,8 @@ export class EventEditFormComponent {
     @Inject(MAT_DIALOG_DATA) private eventData: PlannedEvent,
     private formBuilder: FormBuilder,
     private eventService: EventService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private snackBar: MatSnackBar
   ) {
 
     this.eventForm = this.formBuilder.group({
@@ -41,9 +43,26 @@ export class EventEditFormComponent {
         picture_link: this.eventForm.value.picture_link
       };
 
-      this.eventService.editEvent(eventToEdit.id, eventToEdit).subscribe(updatedEvent => {
-        this.dialogRef.close(updatedEvent);
-      });
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token) {
+          this.eventService.editEvent(eventToEdit.id, eventToEdit, token).subscribe(updatedEvent => {
+              this.dialogRef.close(updatedEvent);
+              return;
+            },
+            error => {
+              this.snackBar.open('Failed to edit event.', 'Close', {
+                duration: 6000
+              });
+              return;
+            });
+        } else {
+          this.snackBar.open('Failure in authentication123.', 'Close', {
+            duration: 6000
+          });
+        }
+      }
     }
   }
 
