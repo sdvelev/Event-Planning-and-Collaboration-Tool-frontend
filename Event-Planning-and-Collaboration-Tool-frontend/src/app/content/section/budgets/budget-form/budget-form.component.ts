@@ -35,26 +35,32 @@ export class BudgetFormComponent {
 
   saveBudget() {
     if (this.budgetForm.valid) {
-      const budgetToSave: Budget = <Budget> {
+      const budgetToSave: Budget = <Budget>{
         id: this.budgetData?.id || null,
         description: this.budgetForm.value.description,
         expenditure_category: this.budgetForm.value.expenditure_category,
         amount: this.budgetForm.value.amount
       };
 
-      if (this.event_id) {
-        this.budgetService.addBudget(budgetToSave, this.event_id).subscribe(
-          updatedEvent => {
-            this.dialogRef.close(updatedEvent);
-          },
-          error => {
-            this.snackBar.open('Failed to save budget. Check if the overall budget permits creating a new budget.', 'Close', {
-              duration: 6000
-            });
-          }
-        );
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token && this.event_id) {
+          this.budgetService.addBudget(budgetToSave, this.event_id, token).subscribe(
+            updatedBudget => {
+              this.dialogRef.close(updatedBudget);
+            }
+            ,
+            error => {
+              this.snackBar.open('Failed to save budget. Check if the overall budget permits creating a new budget.', 'Close', {
+                duration: 6000
+              });
+            }
+          );
+          return;
+        }
       } else {
-        this.snackBar.open('Failed to save budget. Event with such an id cannot be found.', 'Close', {
+        this.snackBar.open('Failure in authorization or missing such an event id.', 'Close', {
           duration: 6000
         });
       }

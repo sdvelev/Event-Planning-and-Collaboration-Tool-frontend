@@ -4,6 +4,6 @@
   Add Event
 </button>
 </div>
-<div *ngIf="(plannedEvents$ | async) as plannedEvents">
-  <app-event-cards [plannedEvents]="plannedEvents"></app-event-cards>
+<div *ngIf="(participants$ | async) as participants">
+  <app-event-cards [participants]="participants"></app-event-cards>
 </div>

@@ -57,10 +57,11 @@ export class RegistrationComponent {
             duration: 6000
           });
         });
+    } else {
+      this.snackBar.open('Failed to register. Form is not valid.', 'Close', {
+        duration: 6000
+      });
     }
-    this.snackBar.open('Failed to register. Form is not valid.', 'Close', {
-      duration: 6000
-    });
   }
 
   cancel() {

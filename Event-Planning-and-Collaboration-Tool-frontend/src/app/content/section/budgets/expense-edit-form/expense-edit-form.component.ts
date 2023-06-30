@@ -5,6 +5,7 @@ import {Budget} from "../../../../models/budget";
 import {DatePipe} from "@angular/common";
 import {ExpenseService} from "../../../../services/expense.service";
 import {Expense} from "../../../../models/expense";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-expense-edit-form',
@@ -21,7 +22,8 @@ export class ExpenseEditFormComponent {
     @Inject(MAT_DIALOG_DATA) private expenseData: Budget,
     private formBuilder: FormBuilder,
     private expenseService: ExpenseService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private snackBar: MatSnackBar
   ) {
 
     this.expenseForm = this.formBuilder.group({
@@ -33,6 +35,7 @@ export class ExpenseEditFormComponent {
   }
 
   editExpense() {
+
     if (this.expenseForm.valid) {
       const expenseToEdit: Expense = <Expense>{
         id: this.expenseData?.id || null,
@@ -40,9 +43,27 @@ export class ExpenseEditFormComponent {
         amount: this.expenseForm.value.amount
       };
 
-      this.expenseService.editExpense(expenseToEdit.id, expenseToEdit).subscribe(updatedExpense => {
-        this.dialogRef.close(updatedExpense);
-      });
+      const tokenObject = localStorage.getItem('tokenEventCrafter');
+      if (tokenObject) {
+        const {token} = JSON.parse(tokenObject);
+        if (token) {
+          this.expenseService.editExpense(expenseToEdit.id, expenseToEdit, token).subscribe(updatedExpense => {
+              this.dialogRef.close(updatedExpense);
+            }
+            ,
+            error => {
+              this.snackBar.open('Failed to edit expense.', 'Close', {
+                duration: 6000
+              });
+            }
+          );
+          return;
+        }
+      } else {
+        this.snackBar.open('Failure in authorization. Please, try again.', 'Close', {
+          duration: 6000
+        });
+      }
     }
   }
 

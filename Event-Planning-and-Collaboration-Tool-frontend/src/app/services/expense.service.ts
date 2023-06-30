@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Budget} from "../models/budget";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Expense} from "../models/expense";
 
 @Injectable({
@@ -34,16 +34,24 @@ export class ExpenseService {
       );
   }
 
-  addExpense(expenseDto: Expense, eventId: number): Observable<number> {
-    console.log(expenseDto);
-    return this.httpClient.post<number>(`http://localhost:8080/expenses?assigned_event_id=${eventId}`, expenseDto);
+  addExpense(expenseDto: Expense, eventId: number, token: string): Observable<number> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.post<number>(`http://localhost:8080/expenses?assigned_event_id=${eventId}`, expenseDto,
+      {headers: headers});
   }
 
-  editExpense(expenseId: number, expensesDto: Expense): Observable<boolean> {
-    return this.httpClient.put<boolean>(`http://localhost:8080/expenses/set?expense_id=${expenseId}`, expensesDto);
+  editExpense(expenseId: number, expensesDto: Expense, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.put<boolean>(`http://localhost:8080/expenses/set?expense_id=${expenseId}`, expensesDto,
+      {headers: headers});
   }
 
-  deleteExpense(expenseId: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(`http://localhost:8080/expenses?id=${expenseId}`);
+  deleteExpense(expenseId: number, token: string): Observable<boolean> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.httpClient.delete<boolean>(`http://localhost:8080/expenses?id=${expenseId}`,
+      {headers: headers});
   }
 }

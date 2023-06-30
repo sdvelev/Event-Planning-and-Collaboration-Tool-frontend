@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EventFormComponent} from "../../events/event-form/event-form.component";
 import {User} from "../../../../models/user";
 import {UserService} from "../../../../services/user.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-section-user',
@@ -11,7 +12,7 @@ import {UserService} from "../../../../services/user.service";
 })
 export class SectionUserComponent {
 
-  user$!: Promise<User | undefined>;
+  user$!: Observable<User | undefined>;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
