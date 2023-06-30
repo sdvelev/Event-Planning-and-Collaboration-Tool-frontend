@@ -35,9 +35,9 @@ import {SectionReviewsComponent} from './content/section/reviews/section-reviews
 import {SectionGuestsComponent} from './content/section/guests/section-guests/section-guests.component';
 import {SectionContractsComponent} from './content/section/contracts/section-contracts/section-contracts.component';
 import {TaskNotificationsComponent} from "./content/task-notifications/task-notifications.component";
-import {
-  SectionTaskNotificationsComponent
-} from "./content/section/tasks/section-task-notifications/section-task-notifications.component";
+// import {
+//   SectionTaskNotificationsComponent
+// } from "./content/section/tasks/section-task-notifications/section-task-notifications.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ReactiveFormsModule} from '@angular/forms';
 import {EventFormComponent} from "./content/section/events/event-form/event-form.component";
@@ -52,7 +52,6 @@ import {GuestFormComponent} from './content/section/guests/guest-form/guest-form
 import {MatChipsModule} from "@angular/material/chips";
 import {ContractFormComponent} from './content/section/contracts/contract-form/contract-form.component';
 import {ContractEditFromComponent} from './content/section/contracts/contract-edit-from/contract-edit-from.component';
-
 import {AllBudgetCardComponent} from './content/section/budgets/all-budget-card/all-budget-card.component';
 import {BudgetCardsComponent} from './content/section/budgets/budget-cards/budget-cards.component';
 import {ExpenseCardsComponent} from './content/section/budgets/expense-cards/expense-cards.component';
@@ -92,7 +91,7 @@ import {ExpenseEditFormComponent} from './content/section/budgets/expense-edit-f
     SectionGuestsComponent,
     SectionContractsComponent,
     TaskNotificationsComponent,
-    SectionTaskNotificationsComponent,
+    // SectionTaskNotificationsComponent,
     EventFormComponent,
     EventEditFormComponent,
     TaskEditFormComponent,
@@ -124,12 +123,10 @@ import {ExpenseEditFormComponent} from './content/section/budgets/expense-edit-f
     MatNativeDateModule,
     MatChipsModule
   ],
-  providers
-:
-[DatePipe],
-  bootstrap
-:
-[AppComponent]
+  providers:
+    [DatePipe],
+  bootstrap:
+    [AppComponent]
 })
 
 export class AppModule {

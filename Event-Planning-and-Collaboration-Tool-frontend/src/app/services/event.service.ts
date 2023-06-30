@@ -14,6 +14,7 @@ export class EventService {
   }
 
   getAllEvents() {
+    console.log("AAAAAAA");
     return this.httpClient.get<PlannedEvent[]>('http://localhost:8080/events').toPromise();
   }
 
