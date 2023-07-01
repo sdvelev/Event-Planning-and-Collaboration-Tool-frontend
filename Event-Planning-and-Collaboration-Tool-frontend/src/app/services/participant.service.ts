@@ -40,7 +40,7 @@ export class ParticipantService {
   editParticipant(participantId: number, editRoleDto: EditRole, token: string): Observable<boolean> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.httpClient.put<boolean>(`http://localhost:8080/pasrticipants/set?pasticipant_id=${participantId}`, editRoleDto,
+    return this.httpClient.put<boolean>(`http://localhost:8080/participants/set?participant_id=${participantId}`, editRoleDto,
       {headers: headers});
   }
 
