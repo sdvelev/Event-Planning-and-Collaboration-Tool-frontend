@@ -2,7 +2,7 @@
   <h2>Delete Profile</h2>
   <form [formGroup]="deleteUserForm">
     <mat-form-field>
-      <input matInput placeholder="Password *" formControlName="password">
+      <input type="password" matInput placeholder="Password *" formControlName="password">
       <mat-error *ngIf="deleteUserForm.controls['password'].invalid && deleteUserForm.controls['password'].touched">
         Password is required
       </mat-error>
