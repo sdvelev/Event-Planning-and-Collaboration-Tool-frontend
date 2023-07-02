@@ -67,3 +67,9 @@ mat-card-actions {
   font-size: 12px;
   padding: 20px;
 }
+
+#audit-budget {
+  font-size: 16px;
+  text-align: right;
+}
+

@@ -8,6 +8,12 @@
   <mat-card-content>
     <p><strong>Description:</strong> {{expense.description}}</p>
     <p><strong>Amount:</strong> £{{expense.amount}}</p>
+    <div id="audit-expense">
+      <p *ngIf="expense.created_by"><strong>Created by:</strong> {{expense.created_by}}</p>
+      <p *ngIf="expense.creation_time"><strong>Creation time:</strong> {{expense.creation_time}}</p>
+      <p *ngIf="expense.updated_by"><strong>Updated by:</strong> {{expense.updated_by}}</p>
+      <p *ngIf="expense.last_updated_time"><strong>Last updated time:</strong> {{expense.last_updated_time}}</p>
+    </div>
   </mat-card-content>
   <mat-card-actions>
     <div id="view">

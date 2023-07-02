@@ -43,3 +43,8 @@ mat-card-actions {
   margin-right: 6px;
   color: #CC0000;
 }
+
+#audit-expense {
+  font-size: 16px;
+  text-align: right;
+}

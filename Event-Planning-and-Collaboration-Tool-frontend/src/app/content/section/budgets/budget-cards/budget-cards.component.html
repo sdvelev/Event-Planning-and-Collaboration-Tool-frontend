@@ -13,6 +13,12 @@
   <mat-card-content>
     <p><strong>Description:</strong> {{budget.description}}</p>
     <p><strong>Amount:</strong> £{{budget.amount}}</p>
+    <div id="audit-budget">
+      <p *ngIf="budget.created_by"><strong>Created by:</strong> {{budget.created_by}}</p>
+      <p *ngIf="budget.creation_time"><strong>Creation time:</strong> {{budget.creation_time}}</p>
+      <p *ngIf="budget.updated_by"><strong>Updated by:</strong> {{budget.updated_by}}</p>
+      <p *ngIf="budget.last_updated_time"><strong>Last updated time:</strong> {{budget.last_updated_time}}</p>
+    </div>
   </mat-card-content>
   <mat-card-actions>
     <div id="view">
