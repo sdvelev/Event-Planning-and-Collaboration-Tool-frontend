@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {MatCardModule} from "@angular/material/card";
 import {MaterialUIModule} from "./material-ui/material-ui.module";
-import {EventComponent} from './event/event.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {HomepageComponent} from './homepage/homepage.component';
 import {HeaderComponent} from './header/header.component';
@@ -74,7 +73,6 @@ import { ReviewEditFormComponent } from './content/section/reviews/review-edit-f
 @NgModule({
   declarations: [
     AppComponent,
-    EventComponent,
     HomepageComponent,
     HeaderComponent,
     NavLoggedInComponent,
